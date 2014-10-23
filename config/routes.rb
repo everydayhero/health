@@ -1,3 +1,3 @@
 Health::Engine.routes.draw do
-  get "/health" => "health#show"
+  root to: "health#show"
 end
