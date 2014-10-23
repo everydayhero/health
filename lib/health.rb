@@ -1,3 +1,4 @@
-require "health/version"
-require "health/app"
-require "health/railtie"
+require "health/engine"
+
+module Health
+end
