@@ -1,24 +1,42 @@
 # Health
 
-TODO: Write a gem description
+Provides a health endpoint for rails applications.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'health'
+    gem "health", github: "coop/health"
 
 And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install health
-
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+Rails.application.routes.draw do
+  mount Health::Engine => "/health"
+end
+```
+
+```
+$ curl localhost:5000/health
+{"name":"mad_max","hostname":"troll.home.gateway","revision":"f211ba6f8cb9b92584bebbe8ad171639b69de816","pid":46582,"parent_id":46564,"platform":{"name":"rails","version":"4.2.0"}}
+```
+
+The default configuration pulls the revision from git in development and test
+and `Rails.root.join("REVISION")` in production. The revision default can be
+configured through the engine:
+
+```
+module MadMax
+  class Application < Rails::Application
+    # Rails.env is passed to the lambda.
+    config.health.revision = ->(env) { "lol" }
+  end
+end
+```
 
 ## Contributing
 
