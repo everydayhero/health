@@ -14,12 +14,6 @@ And then execute:
 
 ## Usage
 
-```ruby
-Rails.application.routes.draw do
-  mount Health::Engine => "/health"
-end
-```
-
 ```
 $ curl localhost:5000/health
 {"name":"mad_max","hostname":"troll.home.gateway","revision":"f211ba6f8cb9b92584bebbe8ad171639b69de816","pid":46582,"parent_id":46564,"platform":{"name":"rails","version":"4.2.0"}}
