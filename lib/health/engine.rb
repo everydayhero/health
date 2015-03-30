@@ -14,13 +14,15 @@ module Health
 
     config.to_prepare { Engine.setup! }
 
-    def self.setup!
-      Health.revision = config.health.revision.call
-
+    initializer "health.routes" do
       you_suck_instance_eval = config
       Rails.application.routes.prepend do
         mount Health::Engine => you_suck_instance_eval.health.endpoint
       end
+    end
+
+    def self.setup!
+      Health.revision = config.health.revision.call
     end
   end
 end
