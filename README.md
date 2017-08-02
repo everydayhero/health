@@ -6,7 +6,7 @@ Provides a health endpoint for rails applications.
 
 Add this line to your application's Gemfile:
 
-    gem "health", github: "coop/health"
+    gem "health", github: "everydayhero/health-rails"
 
 And then execute:
 
