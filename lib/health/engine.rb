@@ -5,8 +5,8 @@ module Health
     config.health = ActiveSupport::OrderedOptions.new
     config.health.endpoint = "/health"
     config.health.revision = -> do
-      if Rails.env.production?
-        Rails.root.join("REVISION").read.chomp
+      if (revision_path = Rails.root.join("REVISION")).exist?
+        revision_path.read.chomp
       else
         `git rev-parse HEAD`.chomp
       end
