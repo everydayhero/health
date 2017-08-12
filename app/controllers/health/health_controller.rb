@@ -1,5 +1,7 @@
 module Health
   class HealthController < ActionController::Base
+    force_ssl except: :show
+    
     def show
       payload = {
         name: Rails.application.class.parent_name.underscore,
